@@ -3,6 +3,20 @@ from keras.models import Sequential
 from keras.layers import Dense,Dropout,Embedding,Flatten,Bidirectional
 
 def keras_lstm(data_dim=100,timesteps=30,units=128,gpu=True):
+    """Keras LSTM
+    
+    Build a Keras LSTM model with a binary classifier.
+    CudanN layers for GPU optimised trainign.
+    
+    Keyword Arguments:
+        data_dim {number} -- Sequence vector size (default: {100})
+        timesteps {number} -- Sequence length (default: {30})
+        units {number} -- N LSTM units (default: {128})
+        gpu {bool} -- GPU or CPU model (default: {True})
+    
+    Returns:
+        [keras.model] -- Compiled model
+    """
     from keras.layers import LSTM
     model_cpu = Sequential()
     #For CudnnLSTM compatibility
@@ -36,6 +50,19 @@ def keras_lstm(data_dim=100,timesteps=30,units=128,gpu=True):
 
 
 def keras_lstm_bidirectional(data_dim=100,timesteps=30,units=128,gpu=True):
+    """Bidirectional LSTM
+    
+    Build a Keras bidirectional LSTM model with a binary classifier.
+    
+    Keyword Arguments:
+        data_dim {number} -- Sequence vector size (default: {100})
+        timesteps {number} -- Sequence length (default: {30})
+        units {number} -- N LSTM units (default: {128})
+        gpu {bool} -- GPU or CPU model (default: {True})
+    
+    Returns:
+        [keras.model] -- Compiled model
+    """
     from keras.layers import LSTM
 
     model_cpu = Sequential()
@@ -69,8 +96,19 @@ def keras_lstm_bidirectional(data_dim=100,timesteps=30,units=128,gpu=True):
     return model
 
 def keras_gru_bidirectional(data_dim=100,timesteps=30,units=128,gpu=True):
-    from keras.layers import GRU
-
+    """Bidirectional GRU
+    
+    Build a Keras bidirectional GRU model with a binary classifier.
+    
+    Keyword Arguments:
+        data_dim {number} -- Sequence vector size (default: {100})
+        timesteps {number} -- Sequence length (default: {30})
+        units {number} -- N GRU units (default: {128})
+        gpu {bool} -- GPU or CPU model (default: {True})
+    
+    Returns:
+        [keras.model] -- Compiled model
+    """
     model_cpu = Sequential()
     # For CudnnGRU compatibility:
     # recurrent activations gru must be fixed to sigmoid
