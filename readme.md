@@ -22,7 +22,7 @@ Type of models
 * TF Serving
 
 
-##Findings
+## Findings
 
 ### It Keras to onnx model transfer was found to work in all cases
 
